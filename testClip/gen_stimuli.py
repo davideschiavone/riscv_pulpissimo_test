@@ -76,17 +76,17 @@ for i in range(0,NumberOfStimuli):
     ops_a_s.append(a_s)
     ops_a_u.append(a_u)
 
-    if(a_s >= ClipUpperBound):
-    	clip = ClipUpperBound
-    elif(a_s <= ClipLowerBound):
+    if(a_s <= ClipLowerBound):
     	clip = ClipLowerBound
+    elif(a_s >= ClipUpperBound):
+        clip = ClipUpperBound
     else:
         clip = a_s
 
-    if(a_u >= ClipUpperBound):
-        clipu = ClipUpperBound
-    elif(a_u < 0):
+    if(a_u <= 0):
         clipu = 0
+    elif(a_u >= ClipUpperBound):
+        clipu = ClipUpperBound
     else:
         clipu = a_u
 
@@ -114,17 +114,18 @@ for i in range(0,NumberOfStimuli):
     b_u = random.randint(-2**20, 2**21 -1)
     b_s = random.randint(-2**20, 2**21 -1)
 
-    if(a_s >= b_s):
-        clip = b_s
-    elif(a_s <= -(b_s +1)):
+
+    if(a_s <= -(b_s +1)):
         clip = -(b_s +1)
+    elif(a_s >= b_s):
+        clip = b_s
     else:
         clip = a_s
 
-    if(a_u >= b_u):
-        clipu = b_u
-    elif(a_u < 0):
+    if(a_u <= 0):
         clipu = 0
+    elif(a_u >= b_u):
+        clipu = b_u
     else:
         clipu = a_u
 
